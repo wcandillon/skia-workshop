@@ -79,11 +79,6 @@ vec4 main(vec2 fragCoord) {
 
 export const HelloSticker = ({ matrix }: HelloStickerProps) => {
   const clock = useClock();
-  const progress = useSharedValue(0);
-  useEffect(() => {
-    progress.value = withDelay(500, withTiming(1, { duration: 3000 }));
-  }, []);
-  const blur = useDerivedValue(() => (1 - progress.value) * 50);
   const uniforms = useDerivedValue(() => ({ resolution: vec(dst.width, dst.height), iTime: clock.value / 1000 }))
   return (
     <Group matrix={matrix}>
@@ -101,8 +96,6 @@ export const HelloSticker = ({ matrix }: HelloStickerProps) => {
           strokeCap="round"
           strokeJoin="round"
         >
-          <Blur blur={blur} />
-          <Shadow dx={4} dy={4} blur={4} color="rgba(0, 0, 0, 0.5)" />
         </Path>
         <Path
           path={path}
@@ -110,7 +103,6 @@ export const HelloSticker = ({ matrix }: HelloStickerProps) => {
           style="stroke"
           strokeCap="round"
           strokeJoin="round"
-          end={progress}
         >
           <Shader
             source={source}

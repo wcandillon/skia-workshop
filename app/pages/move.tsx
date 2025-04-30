@@ -26,7 +26,6 @@ import Animated, {
   withDelay,
   withTiming,
 } from 'react-native-reanimated';
-import { useEffect } from 'react';
 import { Gesture, GestureDetector, GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const path = Skia.Path.MakeFromSVGString(
@@ -46,10 +45,6 @@ interface HelloStickerProps {
 
 export const HelloSticker = ({ matrix }: HelloStickerProps) => {
   const progress = useSharedValue(0);
-  useEffect(() => {
-    progress.value = withDelay(500, withTiming(1, { duration: 3000 }));
-  }, []);
-  const blur = useDerivedValue(() => (1 - progress.value) * 50);
   return (
     <Group matrix={matrix}>
       <Group transform={fitbox('contain', src, dst)}>
@@ -66,7 +61,6 @@ export const HelloSticker = ({ matrix }: HelloStickerProps) => {
           strokeCap="round"
           strokeJoin="round"
         >
-          <Blur blur={blur} />
           <Shadow dx={4} dy={4} blur={4} color="rgba(0, 0, 0, 0.5)" />
         </Path>
         <Path
