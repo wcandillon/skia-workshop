@@ -1,30 +1,19 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View,  useWindowDimensions } from 'react-native';
+import { Canvas, useImage, Image } from '@shopify/react-native-skia';
 import { Stack } from 'expo-router';
 
 export default function HelloPage() {
+  const image = useImage(require('@/assets/images/zurich.jpg'));
+  const {width, height} = useWindowDimensions();
+  if (!image) {
+    return null;
+  }
   return (
-    <View style={styles.container}>
+    <View style={{ flex: 1}}>
       <Stack.Screen options={{ title: '🎨 Draw' }} />
-      <Text style={styles.title}>Hello World!</Text>
-      <Text style={styles.description}>This is a sample page in the pages directory.</Text>
+      <Canvas style={{ flex: 1 }}>
+        <Image image={image} x={0} y={0} width={width} height={height} fit="cover" />
+      </Canvas>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 10,
-  },
-  description: {
-    fontSize: 16,
-    textAlign: 'center',
-  },
-}); 

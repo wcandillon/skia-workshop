@@ -9,8 +9,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "test": "jest --watchAll",
-    "lint": "expo lint",
-    "update-pages": "node ./scripts/generate-pages-list.js"
+    "lint": "expo lint"
   },
   "jest": {
     "preset": "jest-expo"

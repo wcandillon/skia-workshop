@@ -5,21 +5,31 @@ import { useState, useEffect } from 'react';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
-// Import the pages list from the static JSON file
-import pagesList from '../pagesList.json';
 
-interface PageInfo {
-  name: string;
-  route: string;
-}
 
 export default function HomeScreen() {
-  const [pages, setPages] = useState<PageInfo[]>([]);
-
-  useEffect(() => {
-    // Load pages from the static JSON file
-    setPages(pagesList);
-  }, []);
+  const pages = [
+    // 1. Draw
+    {
+      "name": "🎨 Draw",
+      "route": "/pages/draw"
+    },
+    // 1. Draw
+    {
+      "name": "🐎 Animate",
+      "route": "/pages/animate"
+    },
+    // 2. Move
+    {
+      "name": "👋 Move",
+      "route": "/pages/move"
+    },
+    // 3. Style
+    {
+      "name": "💅 Style",
+      "route": "/pages/style"
+    }
+  ];
 
   return (
     <ThemedView style={styles.container}>
@@ -47,11 +57,6 @@ export default function HomeScreen() {
         }
       />
       
-      <ThemedText style={styles.note}>
-        To add new pages: 
-        {'\n'}1. Create new .tsx files in the 'app/pages' directory
-        {'\n'}2. Run "npm run update-pages" to update the list
-      </ThemedText>
     </ThemedView>
   );
 }
