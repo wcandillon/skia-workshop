@@ -1,23 +1,36 @@
 import { StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import { Link } from 'expo-router';
+import { useState, useEffect } from 'react';
 
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
-// Define the pages - just add to this array when you create new pages
-const PAGES = [
-  { name: 'Hello Page', route: '/pages/hello' },
-  { name: 'About Page', route: '/pages/about' }
-];
+// Import the pages list from the static JSON file
+import pagesList from '../pagesList.json';
+
+interface PageInfo {
+  name: string;
+  route: string;
+}
 
 export default function HomeScreen() {
+  const [pages, setPages] = useState<PageInfo[]>([]);
+
+  useEffect(() => {
+    // Load pages from the static JSON file
+    setPages(pagesList);
+  }, []);
+
   return (
     <ThemedView style={styles.container}>
-      <ThemedText type="title" style={styles.header}>🎨 Skia Examples</ThemedText>
+      <ThemedText type="title" style={styles.header}>Pages Directory</ThemedText>
       
+      <ThemedText style={styles.description}>
+        Below is a list of pages from the pages directory. Click on any page to navigate to it.
+      </ThemedText>
       
       <FlatList
-        data={PAGES}
+        data={pages}
         keyExtractor={(item) => item.name}
         contentContainerStyle={styles.list}
         renderItem={({ item }) => (
@@ -27,11 +40,17 @@ export default function HomeScreen() {
             </TouchableOpacity>
           </Link>
         )}
+        ListEmptyComponent={
+          <ThemedText style={styles.emptyText}>
+            No pages found. Run "npm run update-pages" after adding new files.
+          </ThemedText>
+        }
       />
       
       <ThemedText style={styles.note}>
-        Note: To add new pages, create new .tsx files in the 'app/pages' directory and update
-        the PAGES array in this component.
+        To add new pages: 
+        {'\n'}1. Create new .tsx files in the 'app/pages' directory
+        {'\n'}2. Run "npm run update-pages" to update the list
       </ThemedText>
     </ThemedView>
   );
@@ -63,6 +82,10 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 1,
     elevation: 2,
+  },
+  emptyText: {
+    textAlign: 'center',
+    fontStyle: 'italic',
   },
   note: {
     fontSize: 12,

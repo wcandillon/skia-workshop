@@ -1,12 +1,12 @@
 import { View, Text, StyleSheet } from 'react-native';
 import { Stack } from 'expo-router';
 
-export default function AboutPage() {
+export default function AnimatePage() {
   return (
     <View style={styles.container}>
-      <Stack.Screen options={{ title: 'About Page' }} />
-      <Text style={styles.title}>About</Text>
-      <Text style={styles.description}>This is the about page in the pages directory.</Text>
+      <Stack.Screen options={{ title: '🐎 Animate' }} />
+      <Text style={styles.title}>Hello World!</Text>
+      <Text style={styles.description}>This is a sample page in the pages directory.</Text>
     </View>
   );
 }

@@ -4,7 +4,7 @@ import { Stack } from 'expo-router';
 export default function HelloPage() {
   return (
     <View style={styles.container}>
-      <Stack.Screen options={{ title: 'Hello Page' }} />
+      <Stack.Screen options={{ title: '🎨 Draw' }} />
       <Text style={styles.title}>Hello World!</Text>
       <Text style={styles.description}>This is a sample page in the pages directory.</Text>
     </View>

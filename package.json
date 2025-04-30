@@ -9,7 +9,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "test": "jest --watchAll",
-    "lint": "expo lint"
+    "lint": "expo lint",
+    "update-pages": "node ./scripts/generate-pages-list.js"
   },
   "jest": {
     "preset": "jest-expo"
@@ -18,6 +19,7 @@
     "@expo/vector-icons": "^14.0.2",
     "@react-navigation/bottom-tabs": "^7.2.0",
     "@react-navigation/native": "^7.0.14",
+    "@shopify/react-native-skia": "1.5.0",
     "expo": "~52.0.46",
     "expo-application": "^6.0.2",
     "expo-blur": "~14.0.3",
