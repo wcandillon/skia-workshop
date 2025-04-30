@@ -11,20 +11,24 @@ export default function HomeScreen() {
   const pages = [
     // 1. Draw
     {
-      "name": "🎨 Draw",
-      "route": "/pages/draw"
+      "name": "🎨 Draw - Part 1",
+      "route": "/pages/draw1"
     },
-    // 1. Draw
+    {
+      "name": "🎨 Draw - Part 2",
+      "route": "/pages/draw2"
+    },
+    // 2. Animate
     {
       "name": "🐎 Animate",
       "route": "/pages/animate"
     },
-    // 2. Move
+    // 3. Move
     {
       "name": "👋 Move",
       "route": "/pages/move"
     },
-    // 3. Style
+    // 4. Style
     {
       "name": "💅 Style",
       "route": "/pages/style"
