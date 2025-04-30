@@ -40,16 +40,18 @@ const multiply = (...matrices: Matrix4[]) => {
   return matrices.reduce((acc, matrix) => multiply4(acc, matrix), Matrix4());
 };
 
-interface HelloStickerProps {}
+interface HelloStickerProps {
+  matrix: SharedValue<Matrix4>;
+}
 
-export const HelloSticker = ({}: HelloStickerProps) => {
+export const HelloSticker = ({ matrix }: HelloStickerProps) => {
   const progress = useSharedValue(0);
   useEffect(() => {
     progress.value = withDelay(500, withTiming(1, { duration: 3000 }));
   }, []);
   const blur = useDerivedValue(() => (1 - progress.value) * 50);
   return (
-    <Group transform={[{ translateX: 50 }, { translateY: 100 }]}>
+    <Group matrix={matrix}>
       <Group transform={fitbox('contain', src, dst)}>
         <LinearGradient
           start={path.getPoint(0)}
@@ -153,7 +155,6 @@ export const HelloGesture = ({ dimensions, matrix }: HelloGestureProps) => {
       top: y,
       width,
       height,
-      backgroundColor: 'red',
       transform: [
         {
           matrix: m4 as unknown as number[],
@@ -183,9 +184,9 @@ export default function AnimatePage() {
         <Stack.Screen options={{ title: '🎨 Draw' }} />
         <Canvas style={{ flex: 1 }}>
           <Image image={image} x={0} y={0} width={width} height={height} fit="cover" />
-          <HelloSticker />
+          <HelloSticker matrix={matrix} />
         </Canvas>
-        <HelloGesture matrix={matrix} dimensions={{ x: 0, y: 0, width, height }} />
+        <HelloGesture matrix={matrix} dimensions={dst} />
       </View>
     </GestureHandlerRootView>
   );
