@@ -12,10 +12,11 @@ export default function TabLayout() {
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
-        tabBarStyle: { 
-          display: 'none' // Hide the tab bar since we only have one tab
-        }
-      }}>
+        tabBarStyle: {
+          display: 'none', // Hide the tab bar since we only have one tab
+        },
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{

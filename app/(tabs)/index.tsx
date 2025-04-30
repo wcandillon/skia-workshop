@@ -5,44 +5,44 @@ import { useState, useEffect } from 'react';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
-
-
 export default function HomeScreen() {
   const pages = [
     // 1. Draw
     {
-      "name": "🎨 Draw - Part 1",
-      "route": "/pages/draw1"
+      name: '🎨 Draw - Part 1',
+      route: '/pages/draw1',
     },
     {
-      "name": "🎨 Draw - Part 2",
-      "route": "/pages/draw2"
+      name: '🎨 Draw - Part 2',
+      route: '/pages/draw2',
     },
     // 2. Animate
     {
-      "name": "🐎 Animate",
-      "route": "/pages/animate"
+      name: '🐎 Animate',
+      route: '/pages/animate',
     },
     // 3. Move
     {
-      "name": "👋 Move",
-      "route": "/pages/move"
+      name: '👋 Move',
+      route: '/pages/move',
     },
     // 4. Style
     {
-      "name": "💅 Style",
-      "route": "/pages/style"
-    }
+      name: '💅 Style',
+      route: '/pages/style',
+    },
   ];
 
   return (
     <ThemedView style={styles.container}>
-      <ThemedText type="title" style={styles.header}>Pages Directory</ThemedText>
-      
+      <ThemedText type="title" style={styles.header}>
+        Pages Directory
+      </ThemedText>
+
       <ThemedText style={styles.description}>
         Below is a list of pages from the pages directory. Click on any page to navigate to it.
       </ThemedText>
-      
+
       <FlatList
         data={pages}
         keyExtractor={(item) => item.name}
@@ -60,7 +60,6 @@ export default function HomeScreen() {
           </ThemedText>
         }
       />
-      
     </ThemedView>
   );
 }
