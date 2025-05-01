@@ -12,10 +12,6 @@ export default function HomeScreen() {
       name: '🎨 Draw - Part 1',
       route: '/pages/draw1',
     },
-    {
-      name: '🎨 Draw - Part 2',
-      route: '/pages/draw2',
-    },
     // 2. Animate
     {
       name: '🐎 Animate',
