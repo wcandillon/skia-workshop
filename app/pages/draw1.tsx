@@ -1,14 +1,6 @@
 import { View, useWindowDimensions } from 'react-native';
 import {
   Canvas,
-  useImage,
-  Image,
-  Skia,
-  rect,
-  Group,
-  fitbox,
-  LinearGradient,
-  Path,
   Fill,
 } from '@shopify/react-native-skia';
 import { Stack } from 'expo-router';

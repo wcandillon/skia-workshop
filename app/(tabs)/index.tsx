@@ -9,7 +9,7 @@ export default function HomeScreen() {
   const pages = [
     // 1. Draw
     {
-      name: '🎨 Draw - Part 1',
+      name: '🎨 Draw',
       route: '/pages/draw1',
     },
     // 2. Animate
